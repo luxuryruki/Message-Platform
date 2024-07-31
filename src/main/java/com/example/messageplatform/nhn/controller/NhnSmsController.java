@@ -17,7 +17,13 @@ public class NhnSmsController {
 
     @PostMapping("/sendSms")
     public Map<String,Object> send(@RequestParam String content){
-        Map<String,Object> result = nhnSmsService.sendMessage(content);
+        Map<String,Object> result = nhnSmsService.sendSMS(content);
+        return result;
+    }
+
+    @PostMapping("/sendMms")
+    public Map<String,Object> send(@RequestParam String title, @RequestParam String content){
+        Map<String,Object> result = nhnSmsService.sendMMS(title, content);
         return result;
     }
 }

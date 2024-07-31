@@ -1,6 +1,7 @@
 package com.example.messageplatform.nhn;
 
 import com.example.messageplatform.nhn.configuration.NhnSmsConfiguration;
+import com.example.messageplatform.nhn.domain.MmsRequest;
 import com.example.messageplatform.nhn.domain.SmsRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,4 +15,7 @@ public interface NhnSmsClient {
 
     @PostMapping("/sms/v3.0/appKeys/{appKey}/sender/sms")
     Map<String,Object> send(@PathVariable("appKey") String appKey, @RequestBody SmsRequest smsRequest);
+
+    @PostMapping("/sms/v3.0/appKeys/{appKey}/sender/mms")
+    Map<String,Object> send(@PathVariable("appKey") String appKey, @RequestBody MmsRequest mmsRequest);
 }
