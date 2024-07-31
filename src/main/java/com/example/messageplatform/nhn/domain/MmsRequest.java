@@ -7,19 +7,17 @@ import java.util.List;
 
 @Getter
 @Setter
-public class SmsRequest {
+public class MmsRequest {
 //    String templateId;
+    String title;
     String body;
     String sendNo;
+    List<String> attachFileIdList;
     List<Recipient> recipientList;
 //    String requestDate;
 //    String senderGroupingKey;
 //    String userId;
 //    String statsId;
 //    String originCode;
-//
-//    Boolean useConversion;
-//
-
 
 }

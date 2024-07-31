@@ -9,8 +9,8 @@ import java.util.List;
 @Setter
 public class Recipient {
     String recipientNo;
-    String countryCode;
-    String internationalRecipientNo;
-    String recipientGroupingKey;
-
+//    String countryCode;
+//    String internationalRecipientNo;
+//    String recipientGroupingKey;
+//    TemplateParameter templateParameter;
 }
