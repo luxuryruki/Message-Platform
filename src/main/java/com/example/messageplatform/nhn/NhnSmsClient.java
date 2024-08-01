@@ -1,6 +1,7 @@
 package com.example.messageplatform.nhn;
 
 import com.example.messageplatform.nhn.configuration.NhnSmsConfiguration;
+import com.example.messageplatform.nhn.domain.FileUploadInfo;
 import com.example.messageplatform.nhn.domain.MmsRequest;
 import com.example.messageplatform.nhn.domain.SmsRequest;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -18,4 +19,7 @@ public interface NhnSmsClient {
 
     @PostMapping("/sms/v3.0/appKeys/{appKey}/sender/mms")
     Map<String,Object> send(@PathVariable("appKey") String appKey, @RequestBody MmsRequest mmsRequest);
+
+    @PostMapping("/sms/v3.0/appKeys/{appKey}/attachfile/binaryUpload")
+    Map<String,Object> uploadFile(@PathVariable("appKey") String appKey, @RequestBody FileUploadInfo fileUploadInfo);
 }

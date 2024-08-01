@@ -30,8 +30,13 @@ public class NhnSmsConfiguration {
     @Bean
     public RequestInterceptor pushRequestInterceptor() {
         return template -> {
+            String url = template.request().url();
+            if(url.contains("/mms")){
+                template.header("Content-Type", "multipart/form-data");
+            }else {
+                template.header("Content-Type", "application/json");
+            }
             template.header("X-Secret-Key", secretKey);
-            template.header("Content-Type", "application/json");
             template.header("Accept", "application/json");
         };
     }
