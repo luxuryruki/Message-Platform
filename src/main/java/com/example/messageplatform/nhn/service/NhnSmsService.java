@@ -7,7 +7,6 @@ import com.example.messageplatform.nhn.domain.Recipient;
 import com.example.messageplatform.nhn.domain.SmsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -91,31 +90,20 @@ public class NhnSmsService {
         }
 
         for(MultipartFile file : files){
+            try {
 
-            list.add(uploadFile(file,dirPath));
+                String fileName = file.getOriginalFilename();
+
+                // set file path
+                Path filePath = Paths.get(dirPath + fileName);
+                // save file
+                Files.write(filePath, file.getBytes());
+
+                list.add(filePath.toString());
+            }catch (Exception e){
+                throw new RuntimeException(e);
+            }
         }
         return list;
-    }
-
-    public String uploadFile(MultipartFile file, String dirPath){
-        try {
-            if(dirPath == null){
-                dirPath = "uploads";
-            }
-            File directory = new File(dirPath);
-            if(!directory.exists()){
-                directory.mkdirs();
-            }
-            String fileName = file.getOriginalFilename();
-
-            // set file path
-            Path filePath = Paths.get(dirPath + fileName);
-            // save file
-            Files.write(filePath, file.getBytes());
-
-            return fileName.toString();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
     }
 }

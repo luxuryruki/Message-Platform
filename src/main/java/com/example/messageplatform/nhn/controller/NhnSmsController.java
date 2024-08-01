@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,14 +28,12 @@ public class NhnSmsController {
     @PostMapping("/sendMms")
     public Map<String,Object> send(@RequestPart String title,
                                    @RequestPart String content,
-                                   @RequestPart @Nullable MultipartFile files){
+                                   @RequestPart @Nullable List<MultipartFile> files){
 
-        List<String> list = new ArrayList<>();
-
-//        if(files != null){
-//            list = nhnSmsService.uploadFiles(files);
-//        }
-        list.add(nhnSmsService.uploadFile(files, null));
+        List<String> list = null;
+        if(files != null){
+            list = nhnSmsService.uploadFiles(files);
+        }
         Map<String,Object> result = nhnSmsService.sendMMS(title, content, list);
         return result;
     }
