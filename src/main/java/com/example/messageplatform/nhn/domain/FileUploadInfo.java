@@ -11,7 +11,7 @@ public class FileUploadInfo {
 //    String templateId;
     String fileName;
     String createUser;
-    Byte[] fileBody;
+    String fileBody;
 
 
 }

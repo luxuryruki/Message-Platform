@@ -30,7 +30,7 @@ public class NhnSmsController {
                                    @RequestPart String content,
                                    @RequestPart @Nullable List<MultipartFile> files){
 
-        List<String> list = null;
+        List<Integer> list = null;
         if(files != null){
             list = nhnSmsService.uploadFiles(files);
         }

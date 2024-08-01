@@ -12,7 +12,7 @@ public class MmsRequest {
     String title;
     String body;
     String sendNo;
-    List<String> attachFileIdList;
+    List<Integer> attachFileIdList;
     List<Recipient> recipientList;
 //    String requestDate;
 //    String senderGroupingKey;

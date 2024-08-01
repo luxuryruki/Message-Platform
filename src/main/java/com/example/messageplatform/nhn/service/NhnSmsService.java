@@ -2,6 +2,7 @@ package com.example.messageplatform.nhn.service;
 
 import com.example.messageplatform.nhn.NhnSmsClient;
 import com.example.messageplatform.nhn.configuration.NhnSmsConfiguration;
+import com.example.messageplatform.nhn.domain.FileUploadInfo;
 import com.example.messageplatform.nhn.domain.MmsRequest;
 import com.example.messageplatform.nhn.domain.Recipient;
 import com.example.messageplatform.nhn.domain.SmsRequest;
@@ -14,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +52,7 @@ public class NhnSmsService {
         }
     }
 
-    public Map<String,Object> sendMMS(String title, String content, List<String> attachFileIdList){
+    public Map<String,Object> sendMMS(String title, String content, List<Integer> attachFileIdList){
         try{
             String appKey = configuration.getAppKey();
 
@@ -79,8 +81,8 @@ public class NhnSmsService {
         }
     }
 
-    public List<String> uploadFiles(List<MultipartFile> files){
-        List<String> list = new ArrayList<>();
+    public List<Integer> uploadFiles(List<MultipartFile> files){
+        List<Integer> list = new ArrayList<>();
 
         String dirPath = "uploads";
 
@@ -91,7 +93,7 @@ public class NhnSmsService {
 
         for(MultipartFile file : files){
             try {
-
+                String appKey = configuration.getAppKey();
                 String fileName = file.getOriginalFilename();
 
                 // set file path
@@ -99,7 +101,19 @@ public class NhnSmsService {
                 // save file
                 Files.write(filePath, file.getBytes());
 
-                list.add(filePath.toString());
+                // encoding
+                byte[] fileBytes = Files.readAllBytes(filePath);
+                String base64EncodedFile = Base64.getEncoder().encodeToString(fileBytes);
+
+                FileUploadInfo request = new FileUploadInfo();
+                request.setFileName(fileName);
+                request.setCreateUser("uploader");
+                request.setFileBody(base64EncodedFile);
+
+                Map<String,Object> result = nhnSmsClient.uploadFile(appKey, request);
+                Map<String,Object> body = (Map<String,Object>)result.get("body");
+                Map<String, Object> data = (Map<String, Object>) body.get("data");
+                list.add((Integer) data.get("fileId"));
             }catch (Exception e){
                 throw new RuntimeException(e);
             }
