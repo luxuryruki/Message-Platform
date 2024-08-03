@@ -19,4 +19,6 @@ This project leverages NHN's TOAST Message API to provide comprehensive messagin
 4. KAKAOTALK profiles
 
 ## Usage Instruction
+### KAKAOTALK profiles
+According to Kakao's policy, to send KakaoTalk Biz messages, you must first create a channel that has been certified for business use through the KakaoTalk Channel Manager Center. Only then will you be able to send Notification Talk and Friend Talk messages.
 ## List of NHN Toast API
