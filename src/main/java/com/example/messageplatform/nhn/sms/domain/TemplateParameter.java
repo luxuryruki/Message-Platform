@@ -1,4 +1,4 @@
-package com.example.messageplatform.nhn.domain;
+package com.example.messageplatform.nhn.sms.domain;
 
 public class TemplateParameter {
     String key;

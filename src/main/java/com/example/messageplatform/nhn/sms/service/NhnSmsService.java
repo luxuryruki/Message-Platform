@@ -1,11 +1,11 @@
-package com.example.messageplatform.nhn.service;
+package com.example.messageplatform.nhn.sms.service;
 
 import com.example.messageplatform.nhn.NhnSmsClient;
-import com.example.messageplatform.nhn.configuration.NhnSmsConfiguration;
-import com.example.messageplatform.nhn.domain.FileUploadInfo;
-import com.example.messageplatform.nhn.domain.MmsRequest;
-import com.example.messageplatform.nhn.domain.Recipient;
-import com.example.messageplatform.nhn.domain.SmsRequest;
+import com.example.messageplatform.nhn.sms.configuration.NhnSmsConfiguration;
+import com.example.messageplatform.nhn.sms.domain.FileUploadInfo;
+import com.example.messageplatform.nhn.sms.domain.MmsRequest;
+import com.example.messageplatform.nhn.sms.domain.Recipient;
+import com.example.messageplatform.nhn.sms.domain.SmsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,6 +1,6 @@
-package com.example.messageplatform.nhn.controller;
+package com.example.messageplatform.nhn.sms.controller;
 
-import com.example.messageplatform.nhn.service.NhnSmsService;
+import com.example.messageplatform.nhn.sms.service.NhnSmsService;
 import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

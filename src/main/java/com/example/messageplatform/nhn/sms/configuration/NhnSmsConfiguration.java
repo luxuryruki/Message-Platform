@@ -1,4 +1,4 @@
-package com.example.messageplatform.nhn.configuration;
+package com.example.messageplatform.nhn.sms.configuration;
 
 import feign.RequestInterceptor;
 import io.github.cdimascio.dotenv.Dotenv;

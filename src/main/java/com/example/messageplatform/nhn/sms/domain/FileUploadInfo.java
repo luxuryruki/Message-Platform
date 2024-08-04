@@ -1,4 +1,4 @@
-package com.example.messageplatform.nhn.domain;
+package com.example.messageplatform.nhn.sms.domain;
 
 import lombok.Getter;
 import lombok.Setter;
