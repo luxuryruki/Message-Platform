@@ -20,11 +20,11 @@ public class NhnKakaoConfiguration {
 
     public NhnKakaoConfiguration() {
         Dotenv dotenv = Dotenv.load();
-        this.apiUrl = dotenv.get("NHN_NOTIFICATION_SMS_API_URL");
-        this.appKey = dotenv.get("NHN_NOTIFICATION_SMS_APP_KEY");
-        this.secretKey = dotenv.get("NHN_NOTIFICATION_SMS_SECRET_KEY");
-        this.testRecipient = dotenv.get("NHN_NOTIFICATION_SMS_TEST_RECIPIENT");
-        this.testSender = dotenv.get("NHN_NOTIFICATION_SMS_TEST_SENDER");
+        this.apiUrl = dotenv.get("NHN_NOTIFICATION_ALIMTALK_API_URL");
+        this.appKey = dotenv.get("NHN_NOTIFICATION_ALIMTALK_APP_KEY");
+        this.secretKey = dotenv.get("NHN_NOTIFICATION_ALIMTALK_SECRET_KEY");
+        this.testRecipient = dotenv.get("NHN_NOTIFICATION_ALIMTALK_TEST_RECIPIENT");
+        this.testSender = dotenv.get("NHN_NOTIFICATION_ALIMTALK_TEST_SENDER");
     }
 
     @Bean
