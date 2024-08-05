@@ -28,6 +28,14 @@ public class NhnKakaoController {
         return result;
     }
 
+    @PostMapping("/sender/token")
+    public Map<String,Object> authenticateToken(@RequestParam String plusFriendId,
+                                              @RequestParam int token){
+
+        Map<String,Object> result = nhnKakaoService.authenticateSenderToken(plusFriendId,token);
+        return result;
+    }
+
 
     @GetMapping("/template/categories")
     public Map<String,Object> getTemplateCategories(){

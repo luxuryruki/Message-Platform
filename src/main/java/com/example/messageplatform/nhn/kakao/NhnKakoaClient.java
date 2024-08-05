@@ -24,6 +24,9 @@ public interface NhnKakoaClient {
     @PostMapping("/alimtalk/v2.3/appkeys/{appKey}/senders")
     Map<String,Object> registerProfile(@PathVariable("appKey") String appKey, @RequestBody SenderProfile senderProfile);
 
+    @PostMapping("/alimtalk/v2.3/appkeys/{appKey}/sender/token")
+    Map<String,Object> authenticateSenderToken(@PathVariable("appKey") String appKey, @RequestBody Map<String,Object> data);
+
     @GetMapping("/alimtalk/v2.3/appkeys/{appKey}/template/categories")
     Map<String,Object> getTemplateCategories(@PathVariable("appKey") String appKey);
 }

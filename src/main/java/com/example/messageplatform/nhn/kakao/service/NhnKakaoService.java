@@ -55,6 +55,20 @@ public class NhnKakaoService {
             throw new RuntimeException(e);
         }
     }
+    public Map<String,Object> authenticateSenderToken(String plusFriendId,Integer token){
+        try{
+            String appKey = configuration.getAppKey();
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("plusFriendId",plusFriendId);
+            data.put("token",token);
+
+            Map<String,Object> response = nhnKakoaClient.authenticateSenderToken(appKey, data);
+            return response;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 
     public Map<String,Object> getTemplateCategories(){
         try{
