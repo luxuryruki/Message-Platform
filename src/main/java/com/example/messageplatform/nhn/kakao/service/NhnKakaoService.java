@@ -42,14 +42,28 @@ public class NhnKakaoService {
             throw new RuntimeException(e);
         }
     }
-    public Map<String,Object> getCategories(){
+    public Map<String,Object> getSenderCategories(){
         try{
             String appKey = configuration.getAppKey();
 
-            Map<String,Object> response = nhnKakoaClient.getCategories(appKey);
+            Map<String,Object> response = nhnKakoaClient.getSenderCategories(appKey);
             List<Map<String,Object>> categories =(List<Map<String,Object>>) response.get("categories");
             List<Map<String,Object>> result = convertToFlatList(categories);
             response.put("categories",result);
+            return response;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Map<String,Object> getTemplateCategories(){
+        try{
+            String appKey = configuration.getAppKey();
+
+            Map<String,Object> response = nhnKakoaClient.getTemplateCategories(appKey);
+//            List<Map<String,Object>> categories =(List<Map<String,Object>>) response.get("categories");
+//            List<Map<String,Object>> result = convertToFlatList(categories);
+//            response.put("categories",result);
             return response;
         }catch (Exception e){
             throw new RuntimeException(e);

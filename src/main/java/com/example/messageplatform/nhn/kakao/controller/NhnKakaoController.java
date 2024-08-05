@@ -14,17 +14,24 @@ public class NhnKakaoController {
     @Autowired
     private NhnKakaoService nhnKakaoService;
 
-    @GetMapping("/categories")
-    public Map<String,Object> getCategories(){
-        Map<String,Object> result = nhnKakaoService.getCategories();
+    @GetMapping("/sender/categories")
+    public Map<String,Object> getSenderCategories(){
+        Map<String,Object> result = nhnKakaoService.getSenderCategories();
         return result;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/sender/register")
     public Map<String,Object> registerProfile(@RequestParam String plusFriendId,
                                               @RequestParam String phoneNo,
                                               @RequestParam String categoryCode){
         Map<String,Object> result = nhnKakaoService.registerProfile(plusFriendId,phoneNo,categoryCode);
+        return result;
+    }
+
+
+    @GetMapping("/template/categories")
+    public Map<String,Object> getTemplateCategories(){
+        Map<String,Object> result = nhnKakaoService.getTemplateCategories();
         return result;
     }
 }
