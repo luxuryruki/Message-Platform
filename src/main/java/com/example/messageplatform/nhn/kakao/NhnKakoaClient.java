@@ -1,6 +1,7 @@
 package com.example.messageplatform.nhn.kakao;
 
 import com.example.messageplatform.nhn.kakao.configuration.NhnKakaoConfiguration;
+import com.example.messageplatform.nhn.kakao.domain.SenderProfile;
 import com.example.messageplatform.nhn.sms.configuration.NhnSmsConfiguration;
 import com.example.messageplatform.nhn.sms.domain.FileUploadInfo;
 import com.example.messageplatform.nhn.sms.domain.MmsRequest;
@@ -19,4 +20,7 @@ public interface NhnKakoaClient {
     @GetMapping("/alimtalk/v2.3/appkeys/{appKey}/sender/categories")
     Map<String,Object> getCategories(@PathVariable("appKey") String appKey);
 
+
+    @PostMapping("/alimtalk/v2.3/appkeys/{appKey}/senders")
+    Map<String,Object> registerProfile(@PathVariable("appKey") String appKey, @RequestBody SenderProfile senderProfile);
 }

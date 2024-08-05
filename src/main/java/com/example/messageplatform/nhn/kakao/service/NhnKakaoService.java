@@ -3,6 +3,7 @@ package com.example.messageplatform.nhn.kakao.service;
 import com.example.messageplatform.nhn.NhnSmsClient;
 import com.example.messageplatform.nhn.kakao.NhnKakoaClient;
 import com.example.messageplatform.nhn.kakao.configuration.NhnKakaoConfiguration;
+import com.example.messageplatform.nhn.kakao.domain.SenderProfile;
 import com.example.messageplatform.nhn.sms.configuration.NhnSmsConfiguration;
 import com.example.messageplatform.nhn.sms.domain.FileUploadInfo;
 import com.example.messageplatform.nhn.sms.domain.MmsRequest;
@@ -28,6 +29,19 @@ public class NhnKakaoService {
     @Autowired
     private NhnKakoaClient nhnKakoaClient;
 
+    public Map<String,Object> registerProfile(String plusFriendId,String phoneNo,String categoryCode){
+        try {
+            String appKey = configuration.getAppKey();
+            SenderProfile senderProfile = new SenderProfile();
+            senderProfile.setPlusFriendId(plusFriendId);
+            senderProfile.setPhoneNo(phoneNo);
+            senderProfile.setCategoryCode(categoryCode);
+            Map<String,Object> response = nhnKakoaClient.registerProfile(appKey,senderProfile);
+            return response;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
     public Map<String,Object> getCategories(){
         try{
             String appKey = configuration.getAppKey();

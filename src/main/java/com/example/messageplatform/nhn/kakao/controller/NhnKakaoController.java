@@ -19,4 +19,12 @@ public class NhnKakaoController {
         Map<String,Object> result = nhnKakaoService.getCategories();
         return result;
     }
+
+    @PostMapping("/register")
+    public Map<String,Object> registerProfile(@RequestParam String plusFriendId,
+                                              @RequestParam String phoneNo,
+                                              @RequestParam String categoryCode){
+        Map<String,Object> result = nhnKakaoService.registerProfile(plusFriendId,phoneNo,categoryCode);
+        return result;
+    }
 }
