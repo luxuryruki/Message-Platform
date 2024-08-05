@@ -28,7 +28,7 @@ public class NhnKakaoConfiguration {
     }
 
     @Bean
-    public RequestInterceptor pushRequestInterceptor() {
+    public RequestInterceptor kakaoRequestInterceptor() {
         return template -> {
             String url = template.request().url();
 //            if(url.contains("/mms")){
