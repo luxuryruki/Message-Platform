@@ -36,6 +36,27 @@ public class NhnKakaoController {
         return result;
     }
 
+    @GetMapping("/sender/list")
+    public Map<String,Object> getProfiles(){
+
+        Map<String,Object> result = nhnKakaoService.getProfiles();
+        return result;
+    }
+
+    @GetMapping("/sender")
+    public Map<String,Object> getProfiles(@RequestParam String senderKey){
+
+        Map<String,Object> result = nhnKakaoService.getProfile(senderKey);
+        return result;
+    }
+
+    @DeleteMapping("/sender/delete")
+    public Map<String,Object> deleteProfile(@RequestParam String senderKey){
+
+        Map<String,Object> result = nhnKakaoService.deleteProfile(senderKey);
+        return result;
+    }
+
 
     @GetMapping("/template/categories")
     public Map<String,Object> getTemplateCategories(){

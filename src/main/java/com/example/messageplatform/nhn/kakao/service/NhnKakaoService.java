@@ -69,6 +69,37 @@ public class NhnKakaoService {
             throw new RuntimeException(e);
         }
     }
+    public Map<String,Object> getProfiles(){
+        try{
+            String appKey = configuration.getAppKey();
+
+            Map<String,Object> response = nhnKakoaClient.getProfiles(appKey);
+            return response;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    public Map<String,Object> getProfile(String senderKey){
+        try{
+            String appKey = configuration.getAppKey();
+
+            Map<String,Object> response = nhnKakoaClient.getProfile(appKey, senderKey);
+            return response;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Map<String,Object> deleteProfile(String senderKey){
+        try{
+            String appKey = configuration.getAppKey();
+
+            Map<String,Object> response = nhnKakoaClient.deleteProfile(appKey, senderKey);
+            return response;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 
     public Map<String,Object> getTemplateCategories(){
         try{

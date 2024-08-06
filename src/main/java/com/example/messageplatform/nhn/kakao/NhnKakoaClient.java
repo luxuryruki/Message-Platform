@@ -7,10 +7,7 @@ import com.example.messageplatform.nhn.sms.domain.FileUploadInfo;
 import com.example.messageplatform.nhn.sms.domain.MmsRequest;
 import com.example.messageplatform.nhn.sms.domain.SmsRequest;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -29,4 +26,12 @@ public interface NhnKakoaClient {
 
     @GetMapping("/alimtalk/v2.3/appkeys/{appKey}/template/categories")
     Map<String,Object> getTemplateCategories(@PathVariable("appKey") String appKey);
+
+
+    @GetMapping("/alimtalk/v2.3/appkeys/{appKey}/senders")
+    Map<String,Object> getProfiles(@PathVariable("appKey") String appKey);
+    @GetMapping("/alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}")
+    Map<String,Object> getProfile(@PathVariable("appKey") String appKey,@PathVariable("senderKey") String senderKey);
+    @DeleteMapping("/alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}")
+    Map<String,Object> deleteProfile(@PathVariable("appKey") String appKey,@PathVariable("senderKey") String senderKey);
 }
