@@ -5,10 +5,7 @@ import com.example.messageplatform.nhn.kakao.NhnKakoaClient;
 import com.example.messageplatform.nhn.kakao.configuration.NhnKakaoConfiguration;
 import com.example.messageplatform.nhn.kakao.domain.SenderProfile;
 import com.example.messageplatform.nhn.sms.configuration.NhnSmsConfiguration;
-import com.example.messageplatform.nhn.sms.domain.FileUploadInfo;
-import com.example.messageplatform.nhn.sms.domain.MmsRequest;
-import com.example.messageplatform.nhn.sms.domain.Recipient;
-import com.example.messageplatform.nhn.sms.domain.SmsRequest;
+import com.example.messageplatform.nhn.sms.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +25,32 @@ public class NhnKakaoService {
     private NhnKakaoConfiguration configuration;
     @Autowired
     private NhnKakoaClient nhnKakoaClient;
+
+    public Map<String,Object> sendAlimTalk(){
+        String appKey = configuration.getAppKey();
+        String senderKey = configuration.getTestSender();
+        String templateCode = configuration.getTemplateCode();
+
+
+        //if template includes parameters
+        Map<String,String> templateParameter = new HashMap<>();
+        templateParameter.put("이름","Johnny");
+
+        Recipient recipient = new Recipient();
+        recipient.setRecipientNo(configuration.getTestRecipient());
+        recipient.setTemplateParameter(templateParameter);
+
+        List<Recipient> list = new ArrayList<>();
+        list.add(recipient);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("senderKey", senderKey);
+        data.put("templateCode", templateCode);
+        data.put("recipientList", list);
+
+        Map<String,Object> response = nhnKakoaClient.sendAlimTalk(appKey,data);
+        return response;
+    }
 
     public Map<String,Object> registerProfile(String plusFriendId,String phoneNo,String categoryCode){
         try {
@@ -142,5 +165,6 @@ public class NhnKakaoService {
 
         return result;
     }
+
 
 }

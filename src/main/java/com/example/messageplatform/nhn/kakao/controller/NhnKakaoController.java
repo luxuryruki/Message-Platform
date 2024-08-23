@@ -63,4 +63,10 @@ public class NhnKakaoController {
         Map<String,Object> result = nhnKakaoService.getTemplateCategories();
         return result;
     }
+
+    @PostMapping("/alimTalk/send")
+    public Map<String,Object> send(){
+        Map<String,Object> result = nhnKakaoService.sendAlimTalk();
+        return result;
+    }
 }

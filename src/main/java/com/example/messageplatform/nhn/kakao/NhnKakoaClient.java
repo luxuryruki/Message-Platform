@@ -34,4 +34,8 @@ public interface NhnKakoaClient {
     Map<String,Object> getProfile(@PathVariable("appKey") String appKey,@PathVariable("senderKey") String senderKey);
     @DeleteMapping("/alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}")
     Map<String,Object> deleteProfile(@PathVariable("appKey") String appKey,@PathVariable("senderKey") String senderKey);
+
+
+    @PostMapping("/alimtalk/v2.3/appkeys/{appKey}/messages")
+    Map<String,Object> sendAlimTalk(@PathVariable("appKey") String appKey, @RequestBody Map<String,Object> data);
 }

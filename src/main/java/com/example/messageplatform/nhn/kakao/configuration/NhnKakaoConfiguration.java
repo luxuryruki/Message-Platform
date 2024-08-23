@@ -15,6 +15,7 @@ public class NhnKakaoConfiguration {
     private String secretKey;
     private String testRecipient;
     private String testSender;
+    private String templateCode;
 
 
 
@@ -25,6 +26,7 @@ public class NhnKakaoConfiguration {
         this.secretKey = dotenv.get("NHN_NOTIFICATION_ALIMTALK_SECRET_KEY");
         this.testRecipient = dotenv.get("NHN_NOTIFICATION_ALIMTALK_TEST_RECIPIENT");
         this.testSender = dotenv.get("NHN_NOTIFICATION_ALIMTALK_TEST_SENDER");
+        this.templateCode = dotenv.get("NHN_NOTIFICATION_ALIMTALK_TEMPLATE_CODE");
     }
 
     @Bean

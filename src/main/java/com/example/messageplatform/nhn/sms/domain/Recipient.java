@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -12,5 +13,5 @@ public class Recipient {
 //    String countryCode;
 //    String internationalRecipientNo;
 //    String recipientGroupingKey;
-//    TemplateParameter templateParameter;
+    Map<String,String> templateParameter;
 }
